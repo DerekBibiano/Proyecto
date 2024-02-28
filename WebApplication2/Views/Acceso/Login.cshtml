@@ -1,0 +1,125 @@
+﻿<!--
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <link href="@Url.Content("~/Content/css/Login.css")" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-center">
+                    <div class="brand_logo_container">
+                        <img src="https://blossommemento.com/cdn/shop/products/1621149270521_600x600_crop_center@2x.jpg?v=1621696482" class="brand_logo" alt="Logo">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center form_container">
+                    <form action="@Url.Action("Login", "Acceso")" method="post">
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            </div>
+                            <input type="text" name="Correo" class="form-control input_user" value="" placeholder="Correo">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" name="Contrasena" class="form-control input_pass" value="" placeholder="Contraseña">
+                        </div>
+                        @if (ViewData["mensaje"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewData["mensaje"]
+                            </div>
+                        }
+
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button type="submit" name="button" class="btn login_btn">Iniciar sesion</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="mt-4">
+                    <div class="d-flex justify-content-center links">
+                        ¿No tienes una cuenta? <a href="@Url.Action("Registrar", "Acceso")" class="ml-2">Registrarse</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>
+    -->
+@model WebApplication2.Models.usuario
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="@Url.Content("~/Content/css/Login.css")" rel="stylesheet" />
+</head>
+<body>
+    <div class="bloque">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="../../img/logo.png" class="card-tittle" width="136" style="padding-bottom: 10%;">
+            </div>
+            <form action="@Url.Action("Login", "Acceso")" method="post">
+                <div>
+                    <p class="text-left">Correo electrónico:</p>
+                </div>
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+                </div>
+                <div>
+                    <p class="text-left">Contraseña:</p>
+                </div>
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Contrasena, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                    @Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
+                </div>
+                @if (ViewData["mensaje"] != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewData["mensaje"]
+                    </div>
+                }
+                <div class="col-md-12">
+                    <button class="btn" type="submit">Iniciar sesión</button>
+                </div>
+                <div class="mt-4">
+                    <div class="d-flex justify-content-center links">
+                        ¿No tienes una cuenta? <a href="@Url.Action("Registrar", "Acceso")" class="ml-2">Registrarse</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
