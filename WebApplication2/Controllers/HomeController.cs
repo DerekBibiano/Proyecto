@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Data;
 using System.Data.SqlClient;
+=======
+>>>>>>> refs/remotes/origin/master
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NLog;
+<<<<<<< HEAD
 using WebApplication2.Models;
+=======
+
+>>>>>>> refs/remotes/origin/master
 
 namespace WebApplication2.Controllers
 {
@@ -20,6 +27,7 @@ namespace WebApplication2.Controllers
             _logger = LogManager.GetCurrentClassLogger();
         }
 
+<<<<<<< HEAD
         [ValidarSesion]
         public ActionResult Index()
         {
@@ -81,16 +89,35 @@ namespace WebApplication2.Controllers
         [ValidarSesion]
         public ActionResult EditarPerfil(usuario oUsuario)
         {
+=======
+        public ActionResult Index()
+        {
+            //Se registra un registro de tipo warn y se registrara con la descipcion que esta entre comillas
+            _logger.Warn("Un usuario entro a la aplicacion");
+            return View();
+        }
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+>>>>>>> refs/remotes/origin/master
 
             return View();
         }
 
+<<<<<<< HEAD
 
         public ActionResult CerrarSesion()
         {
             // Vuelve nula la sesion, lo que le quita el acceso
             Session["usuario"] = null;
             return RedirectToAction("login", "Acceso");
+=======
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+>>>>>>> refs/remotes/origin/master
         }
 
     }
